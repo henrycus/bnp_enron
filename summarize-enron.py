@@ -4,8 +4,6 @@ Description: Script to read data and produce 3 outputs; a csv and two bar chart 
 """
 import pandas as pd
 import matplotlib.pyplot as plt
-import itertools
-import numpy
 import sys
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -30,6 +28,7 @@ except IOError:
     print "Error: Please verify your file location"
     sys.exit(1)
 
+df_raw['sender'] = df_raw['sender'].fillna('blank')
 print "DataFrame 'df_raw' created"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,9 +42,11 @@ df_results = pd.DataFrame()
 
 print "Generating CSV in progress..."
 lst_person = df_raw['sender'].unique().tolist()
+print "unique list of people generated..."
 
-# using distinct list of people, I find their occurances in the sender and receiver columns
+# using distinct list of people, I find their occurrences in the sender and receiver columns
 # and then insert results into a dictionary
+# todo: needs refactoring for performance
 for p in lst_person:
     for sender in df_raw['sender']:
         if p in sender:
