@@ -8,3 +8,9 @@ To run this program from the windows CMD:
 
 example: 
 - C:\python27\python.exe C:\Users\henry\Desktop\GitProjects\bnp_enron\summarize-enron.py C:\Users\henry\Downloads\enron-event-history-all\enron-event-history-all.csv
+
+Modules required
+- import pandas as pd
+- import matplotlib.pyplot as plt
+- import sys
+- from dateutil import parser
